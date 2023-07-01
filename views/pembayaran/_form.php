@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /** @var yii\web\View $this */
 /** @var app\models\Pembayaran $model */
@@ -12,7 +13,17 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_transaksi_tindakan')->textInput() ?>
+    <?php // = $form->field($model, 'id_transaksi_tindakan')->textInput() ?>
+    <?php 
+    
+	$dataPost=ArrayHelper::map(\app\models\TransaksiTindakan::find()->asArray()->all(), 'id_transaksi_tindakan', 'id_transaksi_tindakan');
+	echo $form->field($model, 'id_transaksi_tindakan')
+        ->dropDownList(
+            $dataPost,           
+            ['id_transaksi_tindakan'=>'id_transaksi_tindakan']
+        );
+    
+    ?>
 
     <?= $form->field($model, 'tanggal')->textInput() ?>
 
