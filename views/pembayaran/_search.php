@@ -17,11 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_pembayaran') ?>
 
-    <?= $form->field($model, 'id_transaksi_tindakan') ?>
 
-    <?= $form->field($model, 'tanggal') ?>
-
-    <?= $form->field($model, 'metode_pembayaran') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

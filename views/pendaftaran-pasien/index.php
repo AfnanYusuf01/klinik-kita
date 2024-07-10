@@ -17,30 +17,35 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Pendaftaran Pasien', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <?php if (!Yii::$app->user->isGuest): ?>
+        <p>
+            <?= Html::a('Create Pendaftaran Pasien', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
+    <?php endif; ?>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+    'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
+    'columns' => array_filter([
+        ['class' => 'yii\grid\SerialColumn'],
+        
+        'id_pasien',
+        'nama_pasien',
+        'alamat_pasien',
+        'no_hp_pasien',
+        'pembayaran_id',
+        
+        !Yii::$app->user->isGuest ? [
+            'class' => ActionColumn::className(),
+            'urlCreator' => function ($action, PendaftaranPasien $model, $key, $index, $column) {
+                return Url::toRoute([$action, 'id_pasien' => $model->id_pasien]);
+            }
+        ] : false,
+    ]),
+]); ?>
 
-            'id_pasien',
-            'nama_pasien',
-            'alamat_pasien',
-            'no_hp_pasien',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, PendaftaranPasien $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id_pasien' => $model->id_pasien]);
-                 }
-            ],
-        ],
-    ]); ?>
 
 
 </div>

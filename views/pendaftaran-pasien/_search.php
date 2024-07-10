@@ -15,13 +15,7 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id_pasien') ?>
-
-    <?= $form->field($model, 'nama_pasien') ?>
-
-    <?= $form->field($model, 'alamat_pasien') ?>
-
-    <?= $form->field($model, 'no_hp_pasien') ?>
+    <?= $form->field($model, 'nama_pasien')->textInput(['placeholder' => 'Nama Pasien']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

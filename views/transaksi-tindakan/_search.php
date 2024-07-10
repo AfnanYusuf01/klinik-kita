@@ -15,13 +15,9 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id_transaksi_tindakan') ?>
 
-    <?= $form->field($model, 'id_tindakan') ?>
 
     <?= $form->field($model, 'id_pasien') ?>
-
-    <?= $form->field($model, 'id_obat') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

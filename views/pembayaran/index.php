@@ -16,12 +16,13 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="pembayaran-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php if (!Yii::$app->user->isGuest): ?>
+        <p>
+            <?= Html::a('Create Pembayaran', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
+    <?php endif; ?>
 
-    <p>
-        <?= Html::a('Create Pembayaran', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -30,10 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id_pembayaran',
-            // 'id_transaksi_tindakan',
             'tanggal',
             'metode_pembayaran',
-            // 'wilayah.nama_wilayah',
             'transtindak.id_transaksi_tindakan',
             [
                 'class' => ActionColumn::className(),

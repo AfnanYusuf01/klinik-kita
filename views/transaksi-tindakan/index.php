@@ -16,12 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="transaksi-tindakan-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php if (!Yii::$app->user->isGuest): ?>
+            <?= Html::a('Create Transaksi Tindakan', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php endif; ?>
 
-    <p>
-        <?= Html::a('Create Transaksi Tindakan', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

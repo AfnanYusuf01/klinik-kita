@@ -32,28 +32,24 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <header id="header">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => '<img src="https://png.pngtree.com/png-clipart/20220303/original/pngtree-hospital-logo-pictures-png-image_7389852.png" 
+                         width="40" 
+                         height="auto" 
+                         alt="Hospital Logo" class="logo">',
         'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
+        'options' => ['class' => 'navbar-expand-md navbar-info bg-info fixed-top']
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
+        'options' => ['class' => 'navbar-nav ms-auto'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            // ['label' => 'About', 'url' => ['/site/about']],
-            // ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'M.Wilayah', 'url' => ['/wilayah']],
-            ['label' => 'M.Tindakan', 'url' => ['/tindakan']],
-            ['label' => 'M.Pegawai', 'url' => ['/pegawai']],
-            ['label' => 'M.Tindakan', 'url' => ['/tindakan']],
-            ['label' => 'M.Obat', 'url' => ['/obat']],
-            ['label' => 'menu daftar', 'url' => ['/pendaftaran-pasien']],
-            ['label' => 'menu tindakan', 'url' => ['/transaksi-tindakan']],
-            ['label' => 'menu pembayaran', 'url' => ['/pembayaran']],
+            ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'Service', 'url' => ['/site/service']],
+            ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest
                 ? ['label' => 'Login', 'url' => ['/site/login']]
                 : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
+                    . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
                         'Logout (' . Yii::$app->user->identity->username . ')',
                         ['class' => 'nav-link btn btn-link logout']
@@ -67,7 +63,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </header>
 
 <main id="main" class="flex-shrink-0" role="main">
-    <div class="container">
+    <div class="container"> 
         <?php if (!empty($this->params['breadcrumbs'])): ?>
             <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
         <?php endif ?>
@@ -79,7 +75,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <footer id="footer" class="mt-auto py-3 bg-light">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; My Company <?= date('Y') ?></div>
+            <div class="col-md-6 text-center text-md-start">&copy;klinik-kita <?= date('Y') ?></div>
             <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
         </div>
     </div>

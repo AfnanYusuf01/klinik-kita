@@ -125,4 +125,12 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    // SiteController.php
+
+        public function actionService()
+        {
+            return $this->render('service');
+        }
+
 }

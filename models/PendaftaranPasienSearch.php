@@ -42,7 +42,10 @@ class PendaftaranPasienSearch extends PendaftaranPasien
     {
         $query = PendaftaranPasien::find();
 
-        // add conditions that should always apply here
+        // Condition to filter only by name when logged in
+        if (!\Yii::$app->user->isGuest) {
+            $query->andFilterWhere(['like', 'nama_pasien', $this->nama_pasien]);
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -61,9 +64,10 @@ class PendaftaranPasienSearch extends PendaftaranPasien
             'id_pasien' => $this->id_pasien,
         ]);
 
-        $query->andFilterWhere(['like', 'nama_pasien', $this->nama_pasien])
-            ->andFilterWhere(['like', 'alamat_pasien', $this->alamat_pasien])
-            ->andFilterWhere(['like', 'no_hp_pasien', $this->no_hp_pasien]);
+            $query->andFilterWhere(['like', 'nama_pasien', $this->nama_pasien])
+                ->andFilterWhere(['like', 'alamat_pasien', $this->alamat_pasien])
+                ->andFilterWhere(['like', 'no_hp_pasien', $this->no_hp_pasien]);
+        
 
         return $dataProvider;
     }
